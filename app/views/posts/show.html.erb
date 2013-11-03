@@ -1,2 +1,9 @@
-<h2><%= link_to @post.title, "http://#{@post.url}" %></h2>
-<p><%= @post.description %></p>
+<p>
+  <%= render @post.categories %>
+</p>
+
+<%= render 'shared/content_title', title: @post.title %>
+
+<p>
+  <%= @post.description %>
+</p>
