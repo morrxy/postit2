@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    # binding pry
+    @post = Post.find(params[:id])
   end
 
 end
