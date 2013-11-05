@@ -8,12 +8,16 @@
     </p>
     <p>
       <%= link_to post.title, post.url %>
+      (<%= link_to 'edit', edit_post_path(post) %>)
     </p>
     <p>
       <%= post.description %>
     </p>
     <p>
-      <span class="quiet">postd by</span> <%= post.creator.username %>
+      <span class="quiet">postd by</span>
+      <%=
+      # post.creator.username
+      %>
       <small>at <%= post.created_at %></small>
     </p>
     <small>
