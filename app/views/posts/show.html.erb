@@ -7,3 +7,27 @@
 <p>
   <%= @post.description %>
 </p>
+
+<hr>
+
+<%= render partial: 'shared/form_errors', locals: {ivar: @comment} %>
+
+<h5>Leave a comment</h5>
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit 'Create Comment', class: 'btn btn-primary' %>
+<% end %>
+
+<% if @post.comments(true).any? %>
+<h5>Comments:</h5>
+<% @post.comments.each do |comment| %>
+  <div class="row">
+    <div class="well span8">
+      <em><%= comment.body %></em>
+      <br>
+      <small> at <%= comment.created_at %></small>
+    </div>
+  </div>
+<% end %>
+<% end %>
