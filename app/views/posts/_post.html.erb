@@ -4,7 +4,7 @@
       <%= render post.categories %>
     </p>
     <p>
-      <%= link_to post.title, post.url %>
+      <%= link_to post.title, fix_url(post.url) %>
       (<%= link_to 'edit', edit_post_path(post) %>)
     </p>
     <p>
