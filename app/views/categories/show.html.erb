@@ -1,0 +1,6 @@
+<p class="lead">
+  <%= link_to 'All Posts', posts_path %> » <%= @category.name %>
+  <hr>
+</p>
+
+<%= render @category.posts %>

@@ -1,12 +1,30 @@
 <%= render partial: 'shared/form_errors', locals: {ivar: @post} %>
 
 <%= form_for @post do |f| %>
-  <%= f.label :title %>
+  <%= f.label :Title %>
   <%= f.text_field :title %>
   <br>
 
-  <%= f.label :url %>
+  <%= f.label :URL %>
   <%= f.text_field :url %>
   <br>
+
+  <%= f.label :Description %>
+  <%= f.text_area :description %>
+  <br>
+
   <%= f.submit "Create Post", class: 'btn btn-primary' %>
+<% end %>
+
+<p>begin test</p>
+
+<%= select_tag(:city_id, '<option value="1">Lisbon</option><option selected="selected">sdfds</option>'.html_safe) %>
+<%= select_tag(:city_id, options_for_select([['lisbon', 1], ['madrid', 2]], 2)) %>
+
+<% @categories.each do |cat| %>
+  <div><input type="checkbox" class="checkbox"><%= cat.name %></div>
+<% end %>
+
+<%= form_tag do %>
+in form ..
 <% end %>
