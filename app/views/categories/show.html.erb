@@ -1,6 +1,4 @@
-<p class="lead">
-  <%= link_to 'All Posts', posts_path %> » <%= @category.name %>
-  <hr>
-</p>
+<% header = link_to('All Posts', posts_path) + " &raquo; #{@category.name}".html_safe %>
 
+<%= render 'shared/content_title', title: header %>
 <%= render @category.posts %>

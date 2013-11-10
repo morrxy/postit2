@@ -14,12 +14,11 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.create(category_params)
+    @category = Category.new(category_params)
 
     if @category.save
-      flash[:notice] = 'Your category was created'
-      # redirect_to categories_path
-      redirect_to posts_path
+      flash[:notice] = 'Category has been created.'
+      redirect_to root_path
     else
       render :new
     end
@@ -28,7 +27,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit!
+    params.require(:category).permit(:name)
   end
 
 end

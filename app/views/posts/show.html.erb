@@ -1,3 +1,7 @@
+<p class='pull-right'>
+  [<%= link_to 'edit this post', edit_post_path(@post) %>]
+</p>
+
 <p>
   <%= render @post.categories %>
 </p>
@@ -10,24 +14,26 @@
 
 <hr>
 
-<%= render partial: 'shared/form_errors', locals: {ivar: @comment} %>
-
-<h5>Leave a comment</h5>
 <%= form_for [@post, @comment] do |f| %>
-  <%= f.text_area :body %>
-  <br>
+  <%=
+  # render partial: 'shared/errors', locals: {obj: @comment, obj2: 'OB2'}
+  render 'shared/errors', obj: @comment
+  %>
+  <div class="control-group">
+    <%= f.label :body, 'Leave a comment' %>
+    <%= f.text_area :body, row: 3, class: 'span4' %>
+  </div>
   <%= f.submit 'Create Comment', class: 'btn btn-primary' %>
 <% end %>
 
-<% if @post.comments(true).any? %>
 <h5>Comments:</h5>
 <% @post.comments.each do |comment| %>
   <div class="row">
     <div class="well span8">
       <em><%= comment.body %></em>
       <br>
-      <small> at <%= comment.created_at %></small>
+      <span class="quiet">by <%= link_to comment.creator.username, '' %></span>
+      <small>at <%= comment.created_at %></small>
     </div>
   </div>
-<% end %>
 <% end %>
