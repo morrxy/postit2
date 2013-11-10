@@ -13,7 +13,7 @@
     <p>
       <span class="quiet">postd by</span>
       <%= post.creator.username %>
-      <small>at <%= post.created_at %></small>
+      <small>at <%= display_datetime(post.created_at) %></small>
     </p>
     <small>
       <span>
