@@ -5,7 +5,9 @@
     </p>
     <p>
       <%= link_to post.title, fix_url(post.url) %>
-      (<%= link_to 'edit', edit_post_path(post) %>)
+      <% if logged_in? %>
+        [<%= link_to 'edit', edit_post_path(post) %>]
+      <% end %>
     </p>
     <p>
       <%= post.description %>
