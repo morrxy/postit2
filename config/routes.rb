@@ -7,8 +7,25 @@ PostitTemplate::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :posts, except: :destroy do
+    member do
+      post :vote
+    end
+
+    # GET /posts/archives
+
+    # collection do
+    #   get :archives
+    # end
+
     resources :comments, only: [:create]
   end
   resources :categories, only: [:new, :create, :show]
   resources :users, only: [:create]
 end
+
+# resources :votes, only: [:create]
+# POST /votes => 'VotesController#create'
+#   - needs two pieces of infomation
+
+# POST /posts/3/vote => 'PostsController#vote'
+# POST /comments/4/vote => 'CommentsController#vote'

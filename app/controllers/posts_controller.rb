@@ -45,6 +45,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def vote
+    # binding.pry
+  end
+
   private
 
   def post_params
