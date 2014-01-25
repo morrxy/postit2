@@ -31,18 +31,23 @@
 <% end %>
 
 <h5>Comments:</h5>
-<% @post.comments.each do |comment| %>
+
+<% @post.comments.sort_by{|x| x.total_votes}.reverse.each do |comment| %>
   <div class="row">
 
     <div class="span0 well text-center">
-      <%= link_to vote_post_comment_path(@post ,comment, vote: true), method: 'post' do %>
-      <i class="icon-arrow-up"></i>
+      <% if logged_in? %>
+        <%= link_to vote_post_comment_path(@post, comment, vote: true), method: 'post' do %>
+        <i class="icon-arrow-up"></i>
+        <% end %>
+        <br>
       <% end %>
-      <br>
       <%= comment.total_votes %>
-      <br>
-      <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post' do %>
-      <i class="icon-arrow-down"></i>
+      <% if logged_in? %>
+        <br>
+        <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post' do %>
+        <i class="icon-arrow-down"></i>
+        <% end %>
       <% end %>
     </div>
 
