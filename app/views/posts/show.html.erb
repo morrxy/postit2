@@ -33,11 +33,25 @@
 <h5>Comments:</h5>
 <% @post.comments.each do |comment| %>
   <div class="row">
+
+    <div class="span0 well text-center">
+      <%= link_to vote_post_comment_path(@post ,comment, vote: true), method: 'post' do %>
+      <i class="icon-arrow-up"></i>
+      <% end %>
+      <br>
+      <%= comment.total_votes %>
+      <br>
+      <%= link_to vote_post_comment_path(@post, comment, vote: false), method: 'post' do %>
+      <i class="icon-arrow-down"></i>
+      <% end %>
+    </div>
+
     <div class="well span8">
       <em><%= comment.body %></em>
       <br>
       <span class="quiet">by <%= link_to comment.creator.username, '' %></span>
       <small>at <%= display_datetime(comment.created_at) %></small>
     </div>
+
   </div>
 <% end %>
