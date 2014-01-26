@@ -31,16 +31,16 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="/users/hujun/edit">
+        <%= link_to edit_user_path(current_user) do %>
           <i class="icon-pencil"></i>
           edit profile
-        </a>
+        <% end %>
       </li>
       <li>
-        <a href="/users/hujun">
+        <%= link_to user_path(current_user) do %>
           <i class="icon-user"></i>
           view profile
-        </a>
+        <% end %>
       </li>
       <li>
         <a href="/logout">

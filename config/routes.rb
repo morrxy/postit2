@@ -24,8 +24,14 @@ PostitTemplate::Application.routes.draw do
     end
 
   end
+
   resources :categories, only: [:new, :create, :show]
-  resources :users, only: [:create]
+
+  resources :users, only: [:create, :show] do
+    member do
+      get :edit
+    end
+  end
 end
 
 # resources :votes, only: [:create]
