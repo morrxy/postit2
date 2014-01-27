@@ -14,3 +14,14 @@
 </div>
 
 <h5><%= @user.username %>'s Activity</h5>
+
+<ul class="nav nav-tabs">
+  <li class="active">
+    <%= link_to "Posts (#{ @posts.size })", user_path %>
+  </li>
+  <li class="">
+    <%= link_to "Comments(#{ @comments.size })", user_path(tab: :comments) %>
+  </li>
+</ul>
+
+<%= render @posts %>

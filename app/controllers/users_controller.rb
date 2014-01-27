@@ -30,6 +30,8 @@ class UsersController < ApplicationController
 
   def show
     # binding.pry
+    @posts = @user.posts
+    @comments = @user.comments
   end
 
   private
